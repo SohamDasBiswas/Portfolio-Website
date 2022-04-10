@@ -1,0 +1,104 @@
+h1.heading{
+    font-size: 60px;
+    text-align: center;
+    font-family: Poppins, sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+p.heading.p__color{
+    margin-bottom: 0;
+    text-align: center;
+    line-height: 1.2;
+}
+.project__box{
+    border-radius: 10px;
+    width: 100%;
+    background-color: #191919;
+    padding: 55px;
+    transition: .4s ease;
+}
+.project__box:hover{
+    transform: translateY(5px);
+}
+.project__box:hover p.skilltext.p__color{
+    color: #fff;
+}
+button.project.btn.pointer{
+    text-transform: capitalize;
+    width: 195px;
+    height: 55px;
+    font-size: 18px;
+    transition: .4s ease;
+    margin-left: 300px;
+    margin-top: -50px;
+}
+.project__box2{
+    border-radius: 10px;
+    width: 100%;
+    background-color: #191919;
+    padding: 55px;
+    transition: .4s ease;
+    margin-top: 15px;
+}
+.project__box2:hover{
+    transform: translateY(5px);
+}
+.project__box2:hover p.skilltext.p__color{
+    color: #fff;
+}
+.project_box2 .proj__img{
+    
+    background-color: #010101;
+    height: 100px;
+    width: 70px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+p.project__text.p__color{
+    margin-bottom: 0;
+}
+h1.project__text {
+    font-size: 19px;
+    font-family: Poppins, sans-serif;
+    padding: 10px 0px;
+}
+/* RESPONSIVE */
+@media only screen and (max-width: 1339px){
+    .project__box {
+        padding: 32px!important;
+        padding-right: 40px!important;
+    }
+    p.project__link{
+        padding-right: 1000px!important;
+    }
+    button.project.btn.pointer{
+        margin-top: -10px!important;
+        margin-left: 250px!important;
+    }
+}
+@media only screen and (max-width: 1180px){
+    .project__box {
+        padding: 32px!important;
+        padding-right: 40px!important;
+    }
+    p.project__link{
+        padding-right: 1000px!important;
+    }
+    button.project.btn.pointer{
+        margin-top: 10px!important;
+        margin-left: 140px!important;
+    }
+}
+@media only screen and (max-width: 921px){
+    .project__box {
+        padding: 32px!important;
+        padding-right: 40px!important;
+    }
+    p.project__link{
+        padding-right: 1000px!important;
+    }
+    button.project.btn.pointer{
+        margin-top: 10px!important;
+        margin-left: 90px!important;
+    }
+}

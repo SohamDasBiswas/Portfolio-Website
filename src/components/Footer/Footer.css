@@ -1,0 +1,9 @@
+.footer{
+    padding: 10px 20px;
+    z-index: 100;
+}
+.copyright{
+    color: #c6c9d8;
+    font-size: 14px;
+    opacity: 0.75;
+}

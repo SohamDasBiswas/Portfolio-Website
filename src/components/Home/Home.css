@@ -1,0 +1,128 @@
+.home__bg{
+    background-image: url("D:/Code/HTML,CSS/REACT PROJECTS/portfolio-website/src/img/img-1-01.png");
+    background-color: #010101;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+li.nav__items{
+    font-size: 18px;
+    padding-bottom: 15px;
+    transition: 0.4s ease-in-out;
+}
+.home__content{
+    padding: 125px 0px;
+}
+h1.home__text{
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: rgba(198, 201, 216, 75)!important;
+}
+h2.home__text{
+    font-size: 54px;
+    line-height: 54px;
+    font-weight: 800;
+    font-family: Montserrat, sans-serif; 
+}
+h3.home__text{
+    font-size: 50px;
+    font-weight: 800;
+    font-family: Montserrat,sans-serif;
+    line-height: 40px;
+    width: 60%;
+    height: 20vh;
+    background: #010101;
+    color: #fff;
+    display: flex;
+}
+span{
+    font-size: 50px;
+    font-weight: 800;
+    padding-left: 10px;
+    background-color: #010101;
+    color: #F9004D;
+}
+
+.typed-fade-out{
+  opacity: 0;
+  transition: opacity .25s;
+  -webkit-animation: 0;
+  animation: 0;
+}
+h4.home__text{
+  font-size: 50px;
+  line-height: 40px;
+  font-weight: 800;
+  font-family: Montserrat, sans-serif; 
+  margin-top: -10px;
+}
+.header{
+    transition: .4s all ease;
+}
+.header.active{
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    padding: 0px 30px;
+    background-color: #191919;
+}
+svg.bi.bi-grid-fill.white.pointer{
+    display: none;
+}
+.toggle__menu{
+    display: flex;
+    justify-content: flex-end;
+    float: right;
+    z-index: 1000;
+    width: 100%;
+}
+ul.sidebar.d__flex{
+    flex-wrap: wrap;
+    height: 100%;
+    position: fixed;
+    right: 0%;
+    background: #010101;
+    justify-content: center;
+    width: 300px;
+    top: 0%;
+    flex-direction: column;
+}
+li.sideNavbar{
+    padding: 25px 30px;
+}
+/* Responsive */
+@media only screen and (max-width: 1182px) {
+    .header{
+        justify-content: space-between;
+    }
+    .navigation.pxy__30{
+        display: none;
+    }
+    h2.white.pz__10{
+        font-size: 50px!important;
+    }
+    svg.bi.bi-grid-fill.white.pointer{
+        width: 30px;
+        height: 30px;
+        display: block;
+          
+    }
+    svg.bi.bi-grid-fill.white.pointer:hover{
+        -webkit-transition: -webkit-transform .1s;
+        transition: transform .1s;
+        -webkit-transform: rotate(360deg) translateZ(0);
+        transform: rotate(360deg) translateZ(0);
+    }
+}
+@media only screen and (max-width: 425px){
+    h2.white.pz__10 {
+        font-size: 32px;
+    }
+    h3.sweet.pz__10{
+        font-size: 40px;
+    }
+    h1.home__text{
+        font-size: 14px;
+    }
+}
