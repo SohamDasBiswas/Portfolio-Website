@@ -39,22 +39,24 @@ function Home() {
             <div classname="home__meta">
               <h1 className="home__text pz__10">WELCOME TO MY WORLD</h1>
               <h2 className="home__text pz__10">Hi, I'm Soham Das Biswas.</h2>
-              <h3 className="home__text pz__10">
-              I'm a
+              {/* <h3 className="home__text pz__10">
+                I'm a */}
                 <span className="typing-box">
-                
-                  <Typewriter
+                <h3 className="home__text pz__10">
+                 
+                  <Typewriter 
                    options={{
                     skipAddStyles: true,
                     // wrapperClassName: "typing-box",
-                    strings: ['Python Devoloper.', 'JavaScript Devoloper.', 'Web Devoloper.', 'Graphics Designer.', 'Video Editor.', 'Arduino Programmer.'],
+                    strings: ['Python Developer.', 'JavaScript Developer.', 'Web Developer.', 'Graphics Designer.', 'Video Editor.', 'Arduino Programmer.'],
                     autoStart: true,
+                    cursor: null,
                     typeSpeed: 150,
                     backSpeed: 150,
                     loop: true
                   }}
-                /></span>
-              </h3>
+                /></h3></span>
+              {/* </h3> */}
 
               <h4 className="home__text pz__10">Currently Study in College.</h4>
             </div>

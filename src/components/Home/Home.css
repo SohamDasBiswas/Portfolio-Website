@@ -6,6 +6,9 @@
     background-size: cover;
     padding-top: 30px;
 }
+.scbar{
+    border-radius: 50px;
+}
 li.nav__items{
     font-size: 18px;
     padding-bottom: 15px;
@@ -41,12 +44,15 @@ h3.home__text{
 span{
     font-size: 50px;
     font-weight: 800;
-    padding: 0px 10px;
-    background-color: #010101;
-    color: #F9004D;
-    width: 70%;
-    display: inline;
+    color: #f9004d;
     display: flex;
+}
+.Typewriter_cursor{
+    position: relative;
+    color: #f9004d;
+}
+h3.home__text{
+    display: block;
 }
 
 /* .typed-fade-out{
