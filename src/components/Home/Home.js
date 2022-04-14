@@ -40,9 +40,13 @@ function Home() {
               <h1 className="home__text pz__10">WELCOME TO MY WORLD</h1>
               <h2 className="home__text pz__10">Hi, I'm Soham Das Biswas.</h2>
               <h3 className="home__text pz__10">
-                I'm a
-                <span><Typewriter
-                  className="auto__type" options={{
+              I'm a
+                <span className="typing-box">
+                
+                  <Typewriter
+                   options={{
+                    skipAddStyles: true,
+                    // wrapperClassName: "typing-box",
                     strings: ['Python Devoloper.', 'JavaScript Devoloper.', 'Web Devoloper.', 'Graphics Designer.', 'Video Editor.', 'Arduino Programmer.'],
                     autoStart: true,
                     typeSpeed: 150,

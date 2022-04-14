@@ -44,15 +44,17 @@ span{
     padding: 0px 10px;
     background-color: #010101;
     color: #F9004D;
-    flex-wrap: none;
+    width: 70%;
+    display: inline;
+    display: flex;
 }
 
-.typed-fade-out{
+/* .typed-fade-out{
   opacity: 0;
   transition: opacity .25s;
   -webkit-animation: 0;
   animation: 0;
-}
+} */
 h4.home__text{
   font-size: 50px;
   line-height: 40px;
