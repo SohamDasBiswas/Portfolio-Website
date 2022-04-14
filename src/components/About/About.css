@@ -50,10 +50,15 @@ a.bottom__to__top.active{
 @media only screen and (max-width: 425px){
     button.about.btn.pointer {
         text-transform: capitalize;
-        width: 165px;
+        width: 135px;
         height: 50px;
         font-size: 13px;
         transition: .4s ease;
+        padding: 0px 10px;
+    }
+    .about__all{
+        margin-left: 80px;
+        margin-right: 20px;
     }
 }
 
