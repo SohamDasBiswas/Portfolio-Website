@@ -199,4 +199,7 @@ li.sideNavbar{
     h1.home__text{
         font-size: 14px;
     }
+    nav.nav__a{
+        gap: 0.3rem;
+    }
 }

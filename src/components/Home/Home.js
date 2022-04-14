@@ -58,7 +58,7 @@ function Home() {
                 /></h3></span>
               {/* </h3> */}
 
-              <h4 className="home__text pz__10">Currently Study in College.</h4>
+              <h4 className="home__text pz__10">Currently Studying in College.</h4>
             </div>
           </div>
         </div>
