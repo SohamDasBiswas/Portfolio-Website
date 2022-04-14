@@ -1,7 +1,19 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import Typewriter from 'typewriter-effect';
 import "./Home.css";
 import logo from "../../img/logo.png";
-import Typed from "typed.js";
+import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
+import { GiSkills } from "react-icons/gi";
+import { AiFillCustomerService } from "react-icons/ai";
+import { AiFillProject } from "react-icons/ai";
+import { BiMessageSquareDetail } from "react-icons/bi";
+import { BsGithub } from "react-icons/bs";
+import { ImLinkedin } from "react-icons/im";
+import { BsTwitter } from "react-icons/bs";
+import { BsInstagram } from "react-icons/bs";
+import { AiFillYoutube } from "react-icons/ai";
+import { FaDiscord } from "react-icons/fa";
 
 function Home() {
   // Fixed Header
@@ -9,77 +21,18 @@ function Home() {
     const header = this.document.querySelector(".header");
     header.classList.toggle("active", window.scrollY > 0);
   });
-  //   Toggle Menu
   const [show, setShow] = useState(false);
+  const [activeNav, setActiveNav] = useState("#");
 
   return (
-    <div className="home" id="Home">
+    <div className="home">
       <div className="home__bg">
         <div className="header d__flex align__items__center pxy__30">
           <div className="logo">
             <img src={logo} alt="" />
           </div>
-          <div className="navigation pxy__30">
-            <ul className="navbar d__flex">
-              <a href="#Home">
-                <li className="nav__items mx__15">Home</li>
-              </a>
-              <a href="#About">
-                <li className="nav__items mx__15">About</li>
-              </a>
-              <a href="#Skills">
-                <li className="nav__items mx__15">Skills</li>
-              </a>
-              <a href="#Hobbies">
-                <li className="nav__items mx__15">Hobbies</li>
-              </a>
-              <a href="#Projects">
-                <li className="nav__items mx__15">Projects</li>
-              </a>
-              <a href="#Contacts">
-                <li className="nav__items mx__15">Contacts</li>
-              </a>
-            </ul>
-          </div>
-          {/* Toggle Menu */}
-          <div className="toggle_menu">
-            <svg onClick={() => setShow(!show)} 
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              class="bi bi-grid-fill white pointer"
-              viewBox="0 0 16 16"
-            >
-              <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z" />
-            </svg>
-          </div>
-          {show ?(
-                <div className="sideNavbar">
-                    <ul className="sidebar d__flex">
-                    
-                        <li className="sideNavbar"><a href="#Home">Home</a></li>
-                    
-                    
-                        <li className="sideNavbar"><a href="#About">About</a></li>
-                    
-                    
-                        <li className="sideNavbar"><a href="#Skills">Skills</a></li>
-                    
-                    
-                        <li className="sideNavbar"><a href="#Hobbies">Hobbies</a></li>
-                    
-                    
-                        <li className="sideNavbar"><a href="#Projects">Projects</a></li>
-                    
-                    
-                        <li className="sideNavbar"><a href="#Contacts">Contacts</a></li>
-                    
-                    </ul>
-              
-          </div>
-          ) :null}
         </div>
+
         {/* HOME CONENT */}
         <div className="container">
           <div className="home__content">
@@ -87,22 +40,89 @@ function Home() {
               <h1 className="home__text pz__10">WELCOME TO MY WORLD</h1>
               <h2 className="home__text pz__10">Hi, I'm Soham Das Biswas.</h2>
               <h3 className="home__text pz__10">
-                I'm a <span className="auto__type"></span>
+                I'm a
+                <span><Typewriter
+                  className="auto__type" options={{
+                    strings: ['Python Devoloper.', 'JavaScript Devoloper.', 'Web Devoloper.', 'Graphics Designer.', 'Video Editor.', 'Arduino Programmer.'],
+                    autoStart: true,
+                    typeSpeed: 150,
+                    backSpeed: 150,
+                    loop: true
+                  }}
+                /></span>
               </h3>
+
               <h4 className="home__text pz__10">Currently Study in College.</h4>
             </div>
           </div>
         </div>
       </div>
+      {/* Nav Bar */}
+      <nav className="nav__a">
+        <a
+          href="#"
+          onClick={() => setActiveNav("#Home")}
+          className={activeNav === "#" ? "active" : ""}
+        >
+          <AiOutlineHome />
+        </a>
+        <a
+          href="#About"
+          onClick={() => setActiveNav("#About")}
+          className={activeNav === "#About" ? "active" : ""}
+        >
+          <AiOutlineUser />
+        </a>
+        <a
+          href="#Skills"
+          onClick={() => setActiveNav("#Skills")}
+          className={activeNav === "#About" ? "active" : ""}
+        >
+          <GiSkills />
+        </a>
+        <a
+          href="#Hobbies"
+          onClick={() => setActiveNav("#Hobbies")}
+          className={activeNav === "#About" ? "active" : ""}
+        >
+          <AiFillCustomerService />
+        </a>
+        <a
+          href="#Projects"
+          onClick={() => setActiveNav("#Projects")}
+          className={activeNav === "#About" ? "active" : ""}
+        >
+          <AiFillProject />
+        </a>
+        <a
+          href="#Contacts"
+          onClick={() => setActiveNav("#Contacts")}
+          className={activeNav === "#About" ? "active" : ""}
+        >
+          <BiMessageSquareDetail />
+        </a>
+      </nav>
+      <nav className="nav__b">
+        <a href="https://github.com/SohamDasBiswas">
+          <BsGithub />
+        </a>
+        <a href="https://www.linkedin.com/in/soham-das-biswas-b5460b1a9/">
+          <ImLinkedin />
+        </a>
+        <a href="https://twitter.com/SOHAMDASBISWAS1">
+          <BsTwitter />
+        </a>
+        <a href="https://www.instagram.com/soham_das_biswas/">
+          <BsInstagram />
+        </a>
+        <a href="https://www.youtube.com/channel/UCF07e0z2L-4AeGE41MTRlRw">
+          <AiFillYoutube />
+        </a>
+        <a href="https://discord.io/communitySDB">
+          <FaDiscord />
+        </a>
+      </nav>
     </div>
   );
 }
 export default Home;
-var options = {
-    strings: ['Python Devoloper.', 'JavaScript Devoloper', 'Web Devoloper.', 'Graphics Designer.', 'Video Editor.', 'Arduino Programmer.'],
-    typeSpeed: 150,
-    backSpeed: 150,
-    loop: true
-  };
-
-  var typed = new Typed('.auto__type',options);

@@ -25,10 +25,10 @@ function About() {
                 College.
               </p>
               <div className="about__button d__flex align__items__center">
-                <a href="#">
+                <a href="https://drive.google.com/file/d/19dQyr9X_ZVpWzOS53Lfkn9NKDJkhXDB7/view?usp=sharing">
                   <button className="about btn pointer">Download CV</button>
                 </a>
-                <a href="#">
+                <a href="#Contacts">
                   <button className="about btn pointer">Hire Me</button>
                 </a>
               </div>

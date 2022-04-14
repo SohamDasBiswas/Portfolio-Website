@@ -137,6 +137,10 @@ button.about.btn.pointer:hover {
   background: #fff;
   color: #000!important;
 }
+button.contact.btn.pointer:hover {
+  background: #fff;
+  color: #000!important;
+}
 button.project.btn.pointer:hover {
   background: #fff;
   color: #000!important;

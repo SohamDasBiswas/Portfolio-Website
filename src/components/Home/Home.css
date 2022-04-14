@@ -4,6 +4,7 @@
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-top: 30px;
 }
 li.nav__items{
     font-size: 18px;
@@ -11,7 +12,8 @@ li.nav__items{
     transition: 0.4s ease-in-out;
 }
 .home__content{
-    padding: 125px 0px;
+    padding: 125px 70px;
+    left: 8%;
 }
 h1.home__text{
     font-size: 18px;
@@ -39,9 +41,10 @@ h3.home__text{
 span{
     font-size: 50px;
     font-weight: 800;
-    padding-left: 10px;
+    padding: 0px 10px;
     background-color: #010101;
     color: #F9004D;
+    flex-wrap: none;
 }
 
 .typed-fade-out{
@@ -65,7 +68,70 @@ h4.home__text{
     z-index: 1000;
     width: 100%;
     padding: 0px 30px;
-    background-color: #191919;
+    /* background-color: #191919; */
+}
+nav.nav__a{
+    background: rgba(0, 0, 0, 0.3);
+    width: max-content;
+    display: block;
+    padding: 0.7rem 1.7rem;
+    z-index: 1002;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2rem;
+    display: flex;
+    gap: 0.8rem;
+    border-radius: 3rem;
+    backdrop-filter: blur(15px);
+}
+nav.nav__a a{
+    background: transparent;
+    padding: 0.9rem;
+    border-radius: 50%;
+    display: flex;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+}
+nav.nav__a a:hover{
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+nav.nav__a a:active {
+    background: #191919;
+    color: #fff;
+}
+nav.nav__b{
+    background: rgba(0, 0, 0, 0.3);
+    width: max-content;
+    display: block;
+    padding: 0.7rem;
+    z-index: 1002;
+    position: fixed;
+    left: 5%;
+    transform: translateX(-50%);
+    bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    border-radius: 3rem;
+    backdrop-filter: blur(15px);
+}
+nav.nav__b a{
+    background: transparent;
+    padding: 0.9rem;
+    border-radius: 50%;
+    display: flex;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+}
+nav.nav__b a:hover{
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+nav.nav__b a:active {
+    background: #191919;
+    color: #fff;
 }
 svg.bi.bi-grid-fill.white.pointer{
     display: none;
