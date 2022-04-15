@@ -46,3 +46,22 @@ button.btn.contact.pointer{
     transition: .4s ease;
     margin-top: 50px;
 }
+@media only screen and (max-width: 425px){
+    .col__2{
+        margin-left: 70px;
+    }
+    /* .contact__box{
+        margin-left: 70px;
+
+    } */
+    input.contact{
+        width: 90%;
+    }
+    textarea#message{
+        width: 90%;
+    }
+    img.contact__img{
+        margin-left: 0px;
+        margin-right: 100px;
+    }
+}

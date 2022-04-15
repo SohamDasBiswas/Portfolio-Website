@@ -200,6 +200,18 @@ li.sideNavbar{
         font-size: 14px;
     }
     nav.nav__a{
-        gap: 0.3rem;
+        gap: 0.01rem;
+        margin-left: 10px;
+    }
+    nav.nav__a{
+        padding: 0px 0px;
+    }
+    nav.nav__b{
+        gap: 0.01rem;
+    }
+    nav.nav__b{
+        padding: 0px 0px;
     }
 }
+    
+
