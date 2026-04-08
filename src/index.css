@@ -1,13 +1,172 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ================================================================
+   GLOBAL STYLES & THEME VARIABLES
+   ================================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Dark theme (default) ── */
+:root {
+  --accent:          #00d4aa;
+  --accent2:         #7c3aed;
+  --accent-dim:      rgba(0,212,170,0.15);
+  --base:            #0f121e;
+  --base-dark:       #080a12;
+  --bg-primary:      #141828;
+  --bg-nav:          rgba(15,18,30,0.92);
+  --card-bg:         #1a1e2e;
+  --border:          rgba(255,255,255,0.07);
+  --text-primary:    #e8eaf0;
+  --text-secondary:  #8b92a8;
+  --text-muted:      #5a6075;
+
+  /* Neumorphic shadows — dark */
+  --nm-raised:       6px 6px 16px #0a0c16, -4px -4px 12px #1e2438;
+  --nm-raised-sm:    3px 3px 8px #0a0c16,  -2px -2px 6px #1e2438;
+  --nm-inset:        inset 3px 3px 8px #0a0c16, inset -2px -2px 6px #1e2438;
+  --nm-hover:        4px 4px 12px #0a0c16, -3px -3px 9px #1e2438;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ── Light theme — warm slate, not stark white ── */
+body.light-mode {
+  --base:            #cdd3de;
+  --base-dark:       #c0c7d4;
+  --bg-primary:      #c8cedd;
+  --bg-nav:          rgba(200,206,221,0.95);
+  --card-bg:         #d2d8e6;
+  --border:          rgba(0,0,0,0.1);
+  --text-primary:    #1a1e2e;
+  --text-secondary:  #3d4460;
+  --text-muted:      #7a829a;
+  --accent:          #009e82;
+  --accent2:         #6d28d9;
+  --accent-dim:      rgba(0,158,130,0.14);
+
+  /* Neumorphic shadows — medium contrast for readability */
+  --nm-raised:       6px 6px 14px #adb4c2, -4px -4px 10px #edf0f6;
+  --nm-raised-sm:    3px 3px 7px #adb4c2,  -2px -2px 5px #edf0f6;
+  --nm-inset:        inset 3px 3px 7px #adb4c2, inset -2px -2px 5px #edf0f6;
+  --nm-hover:        4px 4px 10px #adb4c2, -3px -3px 8px #edf0f6;
 }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  background: var(--base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--base-dark); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+/* ── Scroll progress bar ── */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 9999;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width 0.1s linear;
+}
+
+/* ── Custom cursor ── */
+.cursor {
+  position: fixed; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent); pointer-events: none; z-index: 99999;
+  transform: translate(-50%, -50%); transition: transform 0.1s;
+}
+.cursor-ring {
+  position: fixed; width: 36px; height: 36px; border-radius: 50%;
+  border: 1.5px solid var(--accent); pointer-events: none; z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, opacity 0.2s, left 0.08s, top 0.08s;
+  opacity: 0.7;
+}
+
+/* ── Layout helpers ── */
+.container {
+  max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+}
+section { padding: 6rem 2rem; }
+.section-header {
+  text-align: center; margin-bottom: 4rem;
+}
+.section-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem; color: var(--accent);
+  letter-spacing: 3px; text-transform: uppercase;
+  display: inline-block; margin-bottom: 0.75rem;
+}
+.section-tag::before { content: '< '; opacity: 0.5; }
+.section-tag::after  { content: ' />'; opacity: 0.5; }
+.section-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 0.75rem;
+}
+.section-line {
+  width: 60px; height: 3px; margin: 0 auto;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+}
+
+/* ── Neumorphic buttons (shared) ── */
+.nm-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.5rem; border-radius: 12px;
+  font-family: 'Space Mono', monospace; font-size: 0.82rem; font-weight: 700;
+  letter-spacing: 0.5px; text-decoration: none; cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+  background: var(--bg-primary);
+  box-shadow: var(--nm-raised);
+}
+.nm-btn:hover { transform: translateY(-2px); box-shadow: var(--nm-hover); }
+.nm-btn:active { transform: translateY(0); box-shadow: var(--nm-inset); }
+
+.nm-btn-primary {
+  background: var(--accent) !important;
+  color: #0a0c16 !important;
+  border-color: transparent !important;
+  box-shadow: var(--nm-raised), 0 0 20px rgba(0,212,170,0.25) !important;
+}
+.nm-btn-primary:hover {
+  box-shadow: var(--nm-hover), 0 0 30px rgba(0,212,170,0.4) !important;
+}
+.nm-btn-outline {
+  color: var(--accent);
+  border-color: rgba(0,212,170,0.3);
+}
+.nm-btn-outline:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+}
+
+/* ── Reveal animations ── */
+.reveal, .reveal-left, .reveal-right {
+  opacity: 0; transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal { transform: translateY(30px); }
+.reveal-left { transform: translateX(-30px); }
+.reveal-right { transform: translateX(30px); }
+.reveal.visible, .reveal-left.visible, .reveal-right.visible {
+  opacity: 1; transform: none;
+}
+
+/* ── Back to top ── */
+#scrollTop {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 500;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--bg-primary); border: 1px solid var(--border);
+  color: var(--accent); font-size: 0.9rem; cursor: pointer;
+  box-shadow: var(--nm-raised);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+#scrollTop.show { opacity: 1; pointer-events: auto; }
+#scrollTop:hover { transform: translateY(-3px); box-shadow: var(--nm-hover); }

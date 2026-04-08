@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Soham Das Biswas — Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React.js portfolio with neumorphic dark design, built from scratch.
 
-## Available Scripts
+## 🚀 Quick Start
 
-In the project directory, you can run:
+```bash
+npm install
+npm start
+```
 
-### `npm start`
+Runs on http://localhost:3000
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🏗️ Build for Production
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm run build
+```
 
-### `npm test`
+Deploy the `build/` folder to Vercel, Netlify, or GitHub Pages.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ✏️ Customisation
 
-### `npm run build`
+All personal data lives in **`src/data.js`** — edit that one file to update:
+- Personal info, email, phone, social links
+- Skills with proficiency levels
+- Work experience and bullet points
+- Projects with tags and links
+- Education history
+- Terminal command responses
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🎨 Design System
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Fonts**: Orbitron (headings), Exo 2 (body), Space Mono (code/mono)
+- **Primary accent**: `#00d4aa` (teal)
+- **Secondary accent**: `#7c3aed` (purple)
+- **Icons**: Font Awesome 6
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🆕 Features (beyond the original HTML)
 
-### `npm run eject`
+| Feature | Description |
+|---|---|
+| 🌙 Dark/Light toggle | Full light-mode with neumorphic inversion |
+| 📊 Skill progress bars | Animated on scroll, tabbed by category |
+| 💻 Terminal overlay | Type `help`, `skills`, `experience`, etc. Press Ctrl+` |
+| 🔢 Animated counters | Hero stats count up on first scroll |
+| 🎓 Education section | Timeline with grade badges |
+| 🔍 Project filter | Filter projects by tech tag |
+| 📈 Scroll progress bar | Thin teal bar at the very top |
+| ✨ Reveal animations | Slide-in on scroll for all sections |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📁 Structure
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+src/
+  data.js              ← all CV data (edit this!)
+  index.css            ← global styles + CSS vars
+  App.js               ← root: cursor, scroll, loader, terminal
+  components/
+    Loader/            ← initial loading screen
+    Navbar/            ← fixed nav + theme + terminal toggle
+    Hero/              ← hero with orbit animation + typewriter
+    About/             ← bio + quick stats + achievements
+    Skills/            ← tabbed skills + progress bars
+    Experience/        ← vertical timeline
+    Projects/          ← filterable project cards
+    Education/         ← education timeline (new)
+    Contact/           ← contact form + social links
+    Footer/            ← footer
+    Terminal/          ← interactive CLI (new)
+```
