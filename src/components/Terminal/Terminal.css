@@ -1,0 +1,65 @@
+.terminal-overlay {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem; animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.terminal-window {
+  width: 100%; max-width: 740px; height: 500px;
+  display: flex; flex-direction: column; border-radius: 16px !important;
+  overflow: hidden; animation: slideUp 0.25s ease;
+}
+@keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+.terminal-titlebar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 1rem; background: var(--base-dark);
+  border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.terminal-dots { display: flex; gap: 0.4rem; }
+.dot {
+  width: 12px; height: 12px; border-radius: 50%; cursor: pointer; transition: opacity 0.2s;
+}
+.dot:hover { opacity: 0.75; }
+.dot.red { background: #ff5f57; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #28c840; }
+.terminal-title {
+  font-family: 'Space Mono', monospace; font-size: 0.78rem; color: var(--text-secondary);
+}
+.terminal-title i { margin-right: 0.4rem; color: var(--accent); }
+.terminal-close {
+  background: none; border: none; color: var(--text-muted); cursor: pointer;
+  font-size: 0.9rem; transition: color 0.2s;
+}
+.terminal-close:hover { color: var(--text-primary); }
+
+.terminal-body {
+  flex: 1; overflow-y: auto; padding: 1.25rem;
+  background: #0d0f1a; cursor: text;
+  font-family: 'Space Mono', monospace; font-size: 0.8rem; line-height: 1.7;
+}
+.terminal-body::-webkit-scrollbar { width: 4px; }
+.terminal-body::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+.terminal-line { white-space: pre-wrap; word-break: break-word; }
+.terminal-output { color: #a0aec0; }
+.terminal-input { color: var(--accent); }
+.terminal-error { color: #f87171; }
+
+.terminal-input-row {
+  display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;
+}
+.terminal-prompt { color: var(--accent); white-space: nowrap; }
+.terminal-input {
+  flex: 1; background: none; border: none; outline: none;
+  font-family: 'Space Mono', monospace; font-size: 0.8rem;
+  color: var(--text-primary); caret-color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .terminal-window { height: 420px; }
+  .terminal-body { font-size: 0.72rem; }
+}

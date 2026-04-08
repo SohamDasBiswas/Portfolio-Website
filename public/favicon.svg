@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4aa"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="bgGrad" cx="42%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#252a40"/>
+      <stop offset="100%" stop-color="#141828"/>
+    </radialGradient>
+    <radialGradient id="innerGrad" cx="42%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#1e2338"/>
+      <stop offset="100%" stop-color="#10131f"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Round background -->
+  <circle cx="32" cy="32" r="32" fill="#141828"/>
+
+  <!-- Outer dashed orbit ring -->
+  <circle cx="32" cy="32" r="29" fill="none" stroke="#00d4aa" stroke-width="0.5" stroke-dasharray="2 3" opacity="0.35"/>
+
+  <!-- Middle orbit ring -->
+  <circle cx="32" cy="32" r="23" fill="none" stroke="#00d4aa" stroke-width="0.4" stroke-dasharray="1.5 3.5" opacity="0.2"/>
+
+  <!-- Neumorphic outer disc - light shadow top-left, dark shadow bottom-right -->
+  <circle cx="32" cy="32" r="21" fill="url(#bgGrad)"/>
+  <circle cx="32" cy="32" r="21" fill="none" stroke="#2e3555" stroke-width="1.2" opacity="0.7"/>
+  <circle cx="32" cy="32" r="21" fill="none" stroke="#0a0d18" stroke-width="0.6" opacity="0.5"/>
+
+  <!-- Inner circle -->
+  <circle cx="32" cy="32" r="16.5" fill="url(#innerGrad)"/>
+  <circle cx="32" cy="32" r="16.5" fill="none" stroke="#1e2540" stroke-width="0.6" opacity="0.8"/>
+
+  <!-- SDB text — perfectly centered -->
+  <text
+    x="32"
+    y="36"
+    font-family="Arial Black, sans-serif"
+    font-weight="900"
+    font-size="11.5"
+    text-anchor="middle"
+    dominant-baseline="auto"
+    fill="url(#textGrad)"
+    letter-spacing="1"
+  >SDB</text>
+
+  <!-- Orbiting dot — top (on outer ring, 12 o'clock) -->
+  <circle cx="32" cy="3.5" r="2" fill="#00d4aa" opacity="0.95"/>
+
+  <!-- Orbiting dot — upper right (on outer ring, ~2 o'clock) -->
+  <circle cx="53" cy="14" r="1.3" fill="#00d4aa" opacity="0.55"/>
+
+  <!-- Orbiting dot — lower right (on outer ring, ~4 o'clock) -->
+  <circle cx="57" cy="40" r="1.6" fill="#00d4aa" opacity="0.7"/>
+</svg>
