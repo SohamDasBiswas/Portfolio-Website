@@ -3,12 +3,101 @@ import { terminalCommands } from '../../data';
 import './Terminal.css';
 
 const BOOT_LINES = [
-  'SDB.DEV terminal v1.0.0',
+  'SDB.DEV terminal v2.0.0',
   'Connecting to cloud infrastructure...',
+  'EmailJS service initialized ✓',
   'All systems operational ✓',
   'Type "help" to see available commands.',
   '',
 ];
+
+// ─── Built-in commands ─────────────────────────────────────────
+const BUILTIN = {
+  help: `
+┌─────────────────────────────────────────────────┐
+│              AVAILABLE COMMANDS                 │
+├─────────────────────────────────────────────────┤
+│  about        →  who is soham                   │
+│  skills       →  tech stack & tools             │
+│  experience   →  work history                   │
+│  projects     →  featured projects              │
+│  education    →  academic background            │
+│  hobbies      →  interests beyond work          │
+│  contact      →  get in touch                   │
+│  email        →  send a quick message           │
+│  social       →  social media links             │
+│  whoami       →  current user info              │
+│  date         →  current date & time            │
+│  clear        →  clear terminal                 │
+│  exit         →  close terminal                 │
+└─────────────────────────────────────────────────┘`.trim(),
+
+  hobbies: `
+┌─────────────────────────────────────────────────┐
+│             BEYOND THE TERMINAL                 │
+├─────────────────────────────────────────────────┤
+│  🎮  Gaming                                     │
+│      CASUAL & COMPETITIVE                       │
+│      Story-driven & multiplayer games that      │
+│      fuel problem-solving and sharp reflexes.   │
+│      Tags: PC Gaming · FPS · RPG · Strategy     │
+│                                                 │
+│  📺  Gaming Live Stream                         │
+│      CONTENT CREATOR                            │
+│      Live streams with OBS, bots & community   │
+│      management — a surprisingly DevOps hobby.  │
+│      Tags: Live Stream · OBS · Discord          │
+│      ▶   youtube.com/@sdb_darkninja             │
+└─────────────────────────────────────────────────┘`.trim(),
+
+  contact: `
+┌─────────────────────────────────────────────────┐
+│               CONTACT SOHAM                     │
+├─────────────────────────────────────────────────┤
+│  📧  sohamdb456@gmail.com                       │
+│  📞  +91 81677 35148                            │
+│  📍  Durgapur, West Bengal, India               │
+│                                                 │
+│  💬  Use the contact form on the website or     │
+│      type "email" to send a quick message.      │
+│                                                 │
+│  ⚡  Response time: 24–48 hours                 │
+└─────────────────────────────────────────────────┘`.trim(),
+
+  email: `
+┌─────────────────────────────────────────────────┐
+│            EMAILJS INTEGRATION                  │
+├─────────────────────────────────────────────────┤
+│  ✅  Contact form powered by EmailJS            │
+│  ✅  Instant notification to Soham              │
+│  ✅  Auto-reply sent to sender                  │
+│                                                 │
+│  → Scroll to the Contact section and fill in   │
+│    the form to send a message directly.         │
+│                                                 │
+│  Service ID   : service_l8g863j                 │
+│  Template     : Contact Us                      │
+│  Auto-Reply   : Enabled ✓                       │
+└─────────────────────────────────────────────────┘`.trim(),
+
+  social: `
+┌─────────────────────────────────────────────────┐
+│              SOCIAL LINKS                       │
+├─────────────────────────────────────────────────┤
+│  GitHub    →  github.com/SohamDasBiswas         │
+│  LinkedIn  →  linkedin.com/in/sohamdasbiswas    │
+│  Twitter   →  twitter.com/SOHAMDASBISWAS1       │
+│  Instagram →  instagram.com/soham_das_biswas    │
+│  YouTube   →  youtube.com/@sdb_darkninja        │
+└─────────────────────────────────────────────────┘`.trim(),
+
+  whoami: `guest@sdb.dev — You are browsing Soham's portfolio.
+Role     : Visitor
+Access   : Read-only
+Host     : SohamDasBiswas.github.io`,
+
+  exit: '__EXIT__',
+};
 
 export default function Terminal({ onClose }) {
   const [history, setHistory] = useState(BOOT_LINES.map((l) => ({ type: 'output', text: l })));
@@ -30,21 +119,30 @@ export default function Terminal({ onClose }) {
     const trimmed = cmd.trim().toLowerCase();
     const newHistory = [...history, { type: 'input', text: `guest@sdb.dev:~$ ${cmd}` }];
 
-    if (trimmed === 'clear') {
-      setHistory([]);
-      return;
-    }
-    if (trimmed === '') {
+    if (trimmed === 'clear') { setHistory([]); return; }
+    if (trimmed === '')      { setHistory(newHistory); return; }
+    if (trimmed === 'exit')  { onClose(); return; }
+
+    if (trimmed === 'date') {
+      newHistory.push({ type: 'output', text: new Date().toUTCString() });
       setHistory(newHistory);
+      setCmdHistory((prev) => [cmd, ...prev]);
+      setCmdIdx(-1);
       return;
     }
 
-    const response = terminalCommands[trimmed];
+    // Built-ins first, then data.js fallback
+    const response = BUILTIN[trimmed] || terminalCommands[trimmed];
+
     if (response) {
       response.split('\n').forEach((line) => newHistory.push({ type: 'output', text: line }));
     } else {
-      newHistory.push({ type: 'error', text: `Command not found: ${trimmed}. Type "help" for available commands.` });
+      newHistory.push({
+        type: 'error',
+        text: `Command not found: ${trimmed}. Type "help" for available commands.`,
+      });
     }
+
     setHistory(newHistory);
     setCmdHistory((prev) => [cmd, ...prev]);
     setCmdIdx(-1);
