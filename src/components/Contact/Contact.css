@@ -42,39 +42,186 @@
   transform: translateY(-3px);
 }
 
+/* ═══════════════════════════════════════════
+   FORM BASE
+═══════════════════════════════════════════ */
 .contact-form { padding: 2rem; }
-.form-group { margin-bottom: 1.5rem; }
+.form-group   { margin-bottom: 1.5rem; }
+
 .form-label {
   display: block; font-size: 0.78rem; color: var(--accent);
   letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; font-weight: 500;
 }
+.form-label-optional {
+  color: var(--text-muted); font-size: 0.72rem; text-transform: none; letter-spacing: 0;
+}
+
 .form-input {
   width: 100%; padding: 0.9rem 1.1rem; border-radius: 12px;
   background: var(--base-dark); border: 1px solid rgba(0, 212, 170, 0.12);
   color: var(--text-primary); font-family: 'Exo 2', sans-serif; font-size: 0.9rem;
-  box-shadow: var(--nm-inset); transition: all 0.3s; outline: none;
+  box-shadow: var(--nm-inset); transition: border-color 0.25s, box-shadow 0.25s; outline: none;
+  padding-right: 2.6rem; /* space for validation icon */
+  box-sizing: border-box;
 }
-.form-input:focus { border-color: rgba(0, 212, 170, 0.4); box-shadow: var(--nm-inset), 0 0 0 3px rgba(0, 212, 170, 0.08); }
+.form-input:focus {
+  border-color: rgba(0, 212, 170, 0.4);
+  box-shadow: var(--nm-inset), 0 0 0 3px rgba(0, 212, 170, 0.08);
+}
 .form-input::placeholder { color: var(--text-muted); }
 textarea.form-input { min-height: 130px; resize: vertical; }
+
+.form-input--valid {
+  border-color: rgba(0, 212, 170, 0.45) !important;
+  box-shadow: var(--nm-inset), 0 0 0 2px rgba(0, 212, 170, 0.08) !important;
+}
+.form-input--error {
+  border-color: rgba(248, 113, 113, 0.55) !important;
+  box-shadow: var(--nm-inset), 0 0 0 2px rgba(248, 113, 113, 0.08) !important;
+}
+
+/* ═══════════════════════════════════════════
+   INPUT WRAPPER + ICONS
+═══════════════════════════════════════════ */
+.input-wrapper { position: relative; }
+
+.input-icon {
+  position: absolute; right: 0.85rem; top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem; pointer-events: none;
+}
+.input-icon--textarea { top: 0.95rem; transform: none; }
+.input-icon--valid { color: var(--accent, #00d4aa); }
+.input-icon--error { color: #f87171; }
+
+/* ═══════════════════════════════════════════
+   FIELD-LEVEL ERROR MESSAGE
+═══════════════════════════════════════════ */
+.field-error {
+  display: flex; align-items: center; gap: 0.35rem;
+  margin-top: 0.35rem; font-size: 0.75rem; color: #f87171;
+  animation: slideDown 0.18s ease;
+}
+.field-error i { font-size: 0.7rem; flex-shrink: 0; }
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════
+   PHONE — SELECT CONTROLS ROW
+═══════════════════════════════════════════ */
+.phone-controls {
+  display: flex; gap: 0.6rem; margin-bottom: 0.6rem; flex-wrap: wrap;
+}
+
+/* Generic select wrapper — positions the custom arrow */
+.select-wrapper {
+  position: relative; display: flex; align-items: center;
+}
+.select-wrapper .select-arrow {
+  position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%);
+  font-size: 0.65rem; color: var(--text-muted); pointer-events: none;
+}
+
+.form-select {
+  appearance: none; -webkit-appearance: none;
+  padding: 0.6rem 2.1rem 0.6rem 0.9rem;
+  border-radius: 10px;
+  background: var(--base-dark); border: 1px solid rgba(0, 212, 170, 0.15);
+  color: var(--text-primary); font-family: 'Exo 2', sans-serif; font-size: 0.85rem;
+  box-shadow: var(--nm-inset); cursor: pointer; outline: none;
+  transition: border-color 0.2s;
+}
+.form-select:focus  { border-color: rgba(0, 212, 170, 0.4); }
+.form-select:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* Phone-type dropdown — fixed narrow width */
+.phone-type-wrapper .form-select { min-width: 130px; }
+
+/* Country dropdown — wider to fit flag + name + dial code */
+.country-wrapper { flex: 1; }
+.country-wrapper .form-select { width: 100%; }
+
+/* ═══════════════════════════════════════════
+   PHONE — NUMBER INPUT ROW
+═══════════════════════════════════════════ */
+.phone-input-row {
+  display: flex; align-items: center; position: relative;
+}
+
+/* The number input itself */
+.phone-number-input {
+  flex: 1;
+  /* padding-left is set inline via JS to clear the dial-code badge */
+}
+
+/* ── Dial-code badge ── */
+.dial-code-badge {
+  position: absolute; left: 0;
+  display: flex; align-items: center;
+  height: 100%; padding: 0 0.75rem;
+  font-size: 0.88rem; font-weight: 600;
+  color: var(--accent);
+  border-right: 1px solid rgba(0, 212, 170, 0.18);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 1;
+  /* subtle separator glow */
+  background: linear-gradient(
+    to right,
+    rgba(0, 212, 170, 0.06),
+    transparent
+  );
+  border-radius: 12px 0 0 12px;
+}
+
+/* ── Digit counter pill ── */
+.digit-counter {
+  position: absolute; right: 0.6rem;
+  font-size: 0.68rem; font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(0, 212, 170, 0.06);
+  border: 1px solid rgba(0, 212, 170, 0.12);
+  border-radius: 20px;
+  padding: 0.15rem 0.45rem;
+  pointer-events: none;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.digit-counter--full {
+  color: var(--accent);
+  background: rgba(0, 212, 170, 0.12);
+  border-color: rgba(0, 212, 170, 0.35);
+}
+
+/* ═══════════════════════════════════════════
+   FORM ROW (2-col grid)
+═══════════════════════════════════════════ */
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+/* ═══════════════════════════════════════════
+   STATUS MESSAGES
+═══════════════════════════════════════════ */
 .form-status {
   margin-top: 1rem; text-align: center; font-size: 0.85rem;
   padding: 0.75rem 1rem; border-radius: 10px; font-weight: 500;
   display: flex; align-items: center; justify-content: center; gap: 0.5rem;
 }
 .form-status--success {
-  background: rgba(0, 212, 170, 0.1);
-  border: 1px solid rgba(0, 212, 170, 0.3);
-  color: var(--accent);
+  background: rgba(0, 212, 170, 0.1); border: 1px solid rgba(0, 212, 170, 0.3); color: var(--accent);
 }
 .form-status--error {
-  background: rgba(248, 113, 113, 0.1);
-  border: 1px solid rgba(248, 113, 113, 0.3);
-  color: #f87171;
+  background: rgba(248, 113, 113, 0.1); border: 1px solid rgba(248, 113, 113, 0.3); color: #f87171;
 }
 
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
 @media (max-width: 768px) {
   #contact .contact-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
+  .form-row              { grid-template-columns: 1fr; }
+  .phone-controls        { flex-direction: column; }
+  .phone-type-wrapper .form-select { width: 100%; }
 }
